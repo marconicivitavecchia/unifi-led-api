@@ -1,0 +1,478 @@
+[
+    {
+        "id": "c9557fd4.0012d8",
+        "type": "http in",
+        "z": "6818841b.c7316c",
+        "name": "",
+        "url": "/myled/:id/:state",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 105,
+        "y": 337,
+        "wires": [
+            [
+                "40b94a61.685284",
+                "8feaaf1e.30e9d"
+            ]
+        ]
+    },
+    {
+        "id": "40b94a61.685284",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "change body",
+        "func": "msg.payload = parseInt(msg.req.params.state);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 315,
+        "y": 437,
+        "wires": [
+            [
+                "27135c03.82566c"
+            ]
+        ]
+    },
+    {
+        "id": "8feaaf1e.30e9d",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "to led payload",
+        "func": "msg.payload.id = msg.req.params.id;\nmsg.payload.command = \"config-output\";\nmsg.payload.value = parseInt(msg.req.params.state);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 305,
+        "y": 237,
+        "wires": [
+            [
+                "e979d1b7.dbfbc8"
+            ]
+        ]
+    },
+    {
+        "id": "27135c03.82566c",
+        "type": "template",
+        "z": "6818841b.c7316c",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "This is the payload: <h1>{{payload}}</h1>",
+        "output": "str",
+        "x": 485,
+        "y": 437,
+        "wires": [
+            [
+                "8cfff9ea.abc13",
+                "28ec786c.74746"
+            ]
+        ]
+    },
+    {
+        "id": "e979d1b7.dbfbc8",
+        "type": "switch",
+        "z": "6818841b.c7316c",
+        "name": "select dest",
+        "property": "payload.id",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "dance",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "entry",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "lab",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "presentation",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 510,
+        "y": 240,
+        "wires": [
+            [
+                "c0695cf5.9acc6"
+            ],
+            [
+                "dccd3705.61d5d8"
+            ],
+            [
+                "6cc3c95e.bd5a98"
+            ],
+            [
+                "b63e90a5.9d5568"
+            ]
+        ]
+    },
+    {
+        "id": "8cfff9ea.abc13",
+        "type": "debug",
+        "z": "6818841b.c7316c",
+        "name": "html log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 625,
+        "y": 517,
+        "wires": []
+    },
+    {
+        "id": "28ec786c.74746",
+        "type": "http response",
+        "z": "6818841b.c7316c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 815,
+        "y": 437,
+        "wires": []
+    },
+    {
+        "id": "9d04195e.08d228",
+        "type": "delay",
+        "z": "6818841b.c7316c",
+        "name": "Delay msgs",
+        "pauseType": "delayv",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "e979d1b7.dbfbc8"
+            ]
+        ]
+    },
+    {
+        "id": "c0695cf5.9acc6",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "Dance",
+        "func": "var list = [\n    {\n        id: \"lab\",\n        command:\"config-output\",\n        value:1,\n        delay:0\n    },\n    {\n        id: \"entry\",\n        command:\"config-output\",\n        value:0,\n        delay:200\n    },\n    {\n        id: \"presentation\",\n        command:\"config-output\",\n        value:0,\n        delay:500\n    },\n    {\n        id: \"lab\",\n        command:\"config-output\",\n        value:0,\n        delay:1000\n    },\n    {\n        id: \"entry\",\n        command:\"config-output\",\n        value:1,\n        delay:1200\n    },\n    {\n        id: \"entry\",\n        command:\"config-output\",\n        value:0,\n        delay:1500\n    },\n    {\n        id: \"lab\",\n        command:\"config-output\",\n        value:1,\n        delay:2000\n    }];\nmsgList = [];\nlist.forEach( x => msgList.push({\n    payload:x,\n    delay:x.delay\n    \n}))\nreturn [msgList];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [
+                "9d04195e.08d228",
+                "698794d3.52e0dc"
+            ]
+        ]
+    },
+    {
+        "id": "dccd3705.61d5d8",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "entry led",
+        "func": "msg.url = \"https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7\";\n\nmsg.payload = {\n    \"command\":msg.payload.command,\n    \"value\":msg.payload.value\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 734,
+        "y": 140,
+        "wires": [
+            [
+                "c6374b6d.511e58"
+            ]
+        ]
+    },
+    {
+        "id": "6cc3c95e.bd5a98",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "all lab leds",
+        "func": "msg.url = \"https://10.110.0.19:20443/v1/group/91bbb59d-eb13-4509-a962-87d9b9b03399\";\n\nmsg.payload = {\n    \"command\":msg.payload.command,\n    \"value\":msg.payload.value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 729,
+        "y": 217,
+        "wires": [
+            [
+                "c6374b6d.511e58"
+            ]
+        ]
+    },
+    {
+        "id": "b63e90a5.9d5568",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "presentation area",
+        "func": "msg.url = \"https://10.110.0.19:20443/v1/group/443bb13a-29fe-4aab-939d-9392b94abc68\";\n\nmsg.payload = {\n    \"command\":msg.payload.command,\n    \"value\":msg.payload.value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 729,
+        "y": 297,
+        "wires": [
+            [
+                "c6374b6d.511e58"
+            ]
+        ]
+    },
+    {
+        "id": "698794d3.52e0dc",
+        "type": "debug",
+        "z": "6818841b.c7316c",
+        "name": "dance output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 570,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "e250136.425447",
+        "type": "inject",
+        "z": "6818841b.c7316c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "c0695cf5.9acc6"
+            ]
+        ]
+    },
+    {
+        "id": "c6374b6d.511e58",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "create packet",
+        "func": "msg.rejectUnauthorized = false;\n\n\n// /([A-Za-z0-9-]+):(.*)$/msg.headers['$1'] = '$2';/igm\nmsg.headers = {};\nmsg.headers['Host'] = '10.110.0.19:20443';\nmsg.headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:71.0) Gecko/20100101 Firefox/71.0';\nmsg.headers['Accept'] = '*/*';\nmsg.headers['Accept-Language'] = 'en-US,it-IT;q=0.8,it;q=0.5,en;q=0.3';\nmsg.headers['Accept-Encoding'] = 'gzip, deflate, br';\nmsg.headers['Referer'] = 'https://10.110.0.19:20443/devices';\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Origin'] = 'https://10.110.0.19:20443';\nmsg.headers['Content-Length'] = '37';\nmsg.headers['Connection'] = 'keep-alive';\nmsg.headers['Pragma'] = 'no-cache';\nmsg.headers['Cache-Control'] = 'no-cache';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 920,
+        "y": 220,
+        "wires": [
+            [
+                "349bf10c.55add6"
+            ]
+        ]
+    },
+    {
+        "id": "349bf10c.55add6",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "add auth",
+        "func": "msg.headers['Authorization'] = `Bearer ${flow.get(\"access_token\")}`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1100,
+        "y": 220,
+        "wires": [
+            [
+                "5eb5eba6.735674",
+                "e545e90d.355af"
+            ]
+        ]
+    },
+    {
+        "id": "5eb5eba6.735674",
+        "type": "http request",
+        "z": "6818841b.c7316c",
+        "name": "Send LED msg",
+        "method": "PUT",
+        "ret": "obj",
+        "url": "",
+        "tls": "",
+        "x": 1140,
+        "y": 340,
+        "wires": [
+            [
+                "8d3d2406.4dc33",
+                "85c4ded1.0a32"
+            ]
+        ]
+    },
+    {
+        "id": "e545e90d.355af",
+        "type": "debug",
+        "z": "6818841b.c7316c",
+        "name": "LED msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "headers",
+        "x": 1280,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8d3d2406.4dc33",
+        "type": "debug",
+        "z": "6818841b.c7316c",
+        "name": "LED msg response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1330,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "85c4ded1.0a32",
+        "type": "switch",
+        "z": "6818841b.c7316c",
+        "name": "check auth expired (TBT)",
+        "property": "payload.error.code",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ERR_AUTH_ACCESS_TOKEN_EXPIRED",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "ERR_AUTH_ACCESS_TOKEN_INVALI",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1170,
+        "y": 440,
+        "wires": [
+            [
+                "76b6df1a.b84778"
+            ],
+            [
+                "76b6df1a.b84778"
+            ]
+        ]
+    },
+    {
+        "id": "76b6df1a.b84778",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "create packet",
+        "func": "msg.url = \"https://10.110.0.19:20443/v1/login\";\n\nmsg.rejectUnauthorized = false;\n\n\n// /([A-Za-z0-9-]+):(.*)$/msg.headers['$1'] = '$2';/igm\nmsg.headers = {};\nmsg.headers['Host'] = '10.110.0.19:20443';\nmsg.headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:71.0) Gecko/20100101 Firefox/71.0';\nmsg.headers['Accept'] = '*/*';\nmsg.headers['Accept-Language'] = 'en-US,it-IT;q=0.8,it;q=0.5,en;q=0.3';\nmsg.headers['Accept-Encoding'] = 'gzip, deflate, br';\nmsg.headers['Referer'] = 'https://10.110.0.19:20443/login?redirect=%2Fstatistics';\nmsg.headers['Content-Type'] = 'application/json';\nmsg.headers['Origin'] = 'https://10.110.0.19:20443';\nmsg.headers['Content-Length'] = '45';\nmsg.headers['Connection'] = 'keep-alive';\nmsg.headers['Pragma'] = 'no-cache';\nmsg.headers['Cache-Control'] = 'no-cache';\n\nmsg.payload = {\"username\":\"led_test\",\"password\":\"95tEst59\"};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1160,
+        "y": 560,
+        "wires": [
+            [
+                "f552243c.51d408"
+            ]
+        ]
+    },
+    {
+        "id": "2f7c2a3b.a2a0a6",
+        "type": "inject",
+        "z": "6818841b.c7316c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 960,
+        "y": 560,
+        "wires": [
+            [
+                "76b6df1a.b84778"
+            ]
+        ]
+    },
+    {
+        "id": "f552243c.51d408",
+        "type": "http request",
+        "z": "6818841b.c7316c",
+        "name": "get auth",
+        "method": "POST",
+        "ret": "obj",
+        "url": "https://10.110.0.19:20443/v1/login",
+        "tls": "",
+        "x": 1360,
+        "y": 560,
+        "wires": [
+            [
+                "cd8a63d0.8e8248",
+                "55a18f99.7fa1"
+            ]
+        ]
+    },
+    {
+        "id": "cd8a63d0.8e8248",
+        "type": "function",
+        "z": "6818841b.c7316c",
+        "name": "store auth",
+        "func": "flow.set(\"access_token\",msg.payload.access_token);\nflow.set(\"refresh_token\",msg.payload.refresh_token);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1490,
+        "y": 620,
+        "wires": [
+            [
+                "6471e0ab.9cbd4"
+            ]
+        ]
+    },
+    {
+        "id": "55a18f99.7fa1",
+        "type": "debug",
+        "z": "6818841b.c7316c",
+        "name": "login log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1520,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6471e0ab.9cbd4",
+        "type": "debug",
+        "z": "6818841b.c7316c",
+        "name": "store auth log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1580,
+        "y": 660,
+        "wires": []
+    }
+]

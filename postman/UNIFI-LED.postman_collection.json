@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "2cf4f414-57fa-4db2-8931-0d8638f2e21a",
+		"name": "UNIFI-LED",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Entrance LED ON",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Host",
+						"value": "10.110.0.19:20443",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:71.0) Gecko/20100101 Firefox/71.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-US,it-IT;q=0.8,it;q=0.5,en;q=0.3",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://10.110.0.19:20443/devices",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTkyMjksImV4cCI6MTU3ODQ4NTYyOX0.Xzidr1f-FP2ntdxQnQ_j0P7OpayIuI0bgm2yOb6zcHs",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://10.110.0.19:20443",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "37",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Pragma",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"command\":\"config-output\",\"value\":1}"
+				},
+				"url": {
+					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"protocol": "https",
+					"host": [
+						"10",
+						"110",
+						"0",
+						"19"
+					],
+					"port": "20443",
+					"path": [
+						"v1",
+						"devices",
+						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entrance LED OFF",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": " 10.110.0.19:20443"
+					},
+					{
+						"key": "User-Agent",
+						"type": "text",
+						"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:71.0) Gecko/20100101 Firefox/71.0"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": " */*"
+					},
+					{
+						"key": "Accept-Language",
+						"type": "text",
+						"value": " en-US,it-IT;q=0.8,it;q=0.5,en;q=0.3"
+					},
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": " gzip, deflate, br"
+					},
+					{
+						"key": "Referer",
+						"type": "text",
+						"value": " https://10.110.0.19:20443/devices"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTI5MDgsImV4cCI6MTU3ODQ3OTMwOH0.VyXxF5t_vmlLunRJiMJQOXX32weiMTkyMbJUaMTWjJs"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": " https://10.110.0.19:20443"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": " 37"
+					},
+					{
+						"key": "Connection",
+						"type": "text",
+						"value": " keep-alive"
+					},
+					{
+						"key": "Pragma",
+						"type": "text",
+						"value": " no-cache"
+					},
+					{
+						"key": "Cache-Control",
+						"type": "text",
+						"value": " no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"command\":\"config-output\",\"value\":0}"
+				},
+				"url": {
+					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"protocol": "https",
+					"host": [
+						"10",
+						"110",
+						"0",
+						"19"
+					],
+					"port": "20443",
+					"path": [
+						"v1",
+						"devices",
+						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entrance LED Locate",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": " 10.110.0.19:20443"
+					},
+					{
+						"key": "User-Agent",
+						"type": "text",
+						"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:71.0) Gecko/20100101 Firefox/71.0"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": " */*"
+					},
+					{
+						"key": "Accept-Language",
+						"type": "text",
+						"value": " en-US,it-IT;q=0.8,it;q=0.5,en;q=0.3"
+					},
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": " gzip, deflate, br"
+					},
+					{
+						"key": "Referer",
+						"type": "text",
+						"value": " https://10.110.0.19:20443/devices"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTI5MDgsImV4cCI6MTU3ODQ3OTMwOH0.VyXxF5t_vmlLunRJiMJQOXX32weiMTkyMbJUaMTWjJs"
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": " https://10.110.0.19:20443"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": " 37"
+					},
+					{
+						"key": "Connection",
+						"type": "text",
+						"value": " keep-alive"
+					},
+					{
+						"key": "Pragma",
+						"type": "text",
+						"value": " no-cache"
+					},
+					{
+						"key": "Cache-Control",
+						"type": "text",
+						"value": " no-cache"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"command\":\"locate\"}"
+				},
+				"url": {
+					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"protocol": "https",
+					"host": [
+						"10",
+						"110",
+						"0",
+						"19"
+					],
+					"port": "20443",
+					"path": [
+						"v1",
+						"devices",
+						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entrance LED Dimmer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Host",
+						"value": " 10.110.0.19:20443",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:71.0) Gecko/20100101 Firefox/71.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": " en-US,it-IT;q=0.8,it;q=0.5,en;q=0.3",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": " gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": " https://10.110.0.19:20443/devices",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTkyMjksImV4cCI6MTU3ODQ4NTYyOX0.Xzidr1f-FP2ntdxQnQ_j0P7OpayIuI0bgm2yOb6zcHs",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": " https://10.110.0.19:20443",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": " 29",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": " keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Pragma",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": " no-cache",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"command\":\"sync\",\"value\":99}"
+				},
+				"url": {
+					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"protocol": "https",
+					"host": [
+						"10",
+						"110",
+						"0",
+						"19"
+					],
+					"port": "20443",
+					"path": [
+						"v1",
+						"devices",
+						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
