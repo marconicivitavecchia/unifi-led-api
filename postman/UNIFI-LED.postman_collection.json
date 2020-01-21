@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Entrance LED ON",
+			"name": "LED Panel ON",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -15,7 +15,7 @@
 				"header": [
 					{
 						"key": "Host",
-						"value": "10.110.0.19:20443",
+						"value": "{{servername}}:20443",
 						"type": "text"
 					},
 					{
@@ -40,7 +40,7 @@
 					},
 					{
 						"key": "Referer",
-						"value": "https://10.110.0.19:20443/devices",
+						"value": "https://{{servername}}:20443/devices",
 						"type": "text"
 					},
 					{
@@ -51,18 +51,19 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTkyMjksImV4cCI6MTU3ODQ4NTYyOX0.Xzidr1f-FP2ntdxQnQ_j0P7OpayIuI0bgm2yOb6zcHs",
+						"value": "Bearer {{accessToken}}",
 						"type": "text"
 					},
 					{
 						"key": "Origin",
-						"value": "https://10.110.0.19:20443",
+						"value": "https://{{servername}}:20443",
 						"type": "text"
 					},
 					{
 						"key": "Content-Length",
 						"value": "37",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "Connection",
@@ -85,33 +86,30 @@
 					"raw": "{\"command\":\"config-output\",\"value\":1}"
 				},
 				"url": {
-					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"raw": "https://{{servername}}:20443/v1/devices/{{id}}",
 					"protocol": "https",
 					"host": [
-						"10",
-						"110",
-						"0",
-						"19"
+						"{{servername}}"
 					],
 					"port": "20443",
 					"path": [
 						"v1",
 						"devices",
-						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Entrance LED OFF",
+			"name": "LED Panel OFF",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Host",
 						"type": "text",
-						"value": " 10.110.0.19:20443"
+						"value": "{{servername}}:20443"
 					},
 					{
 						"key": "User-Agent",
@@ -136,7 +134,7 @@
 					{
 						"key": "Referer",
 						"type": "text",
-						"value": " https://10.110.0.19:20443/devices"
+						"value": " https://{{servername}}:20443/devices"
 					},
 					{
 						"key": "Content-Type",
@@ -147,17 +145,18 @@
 					{
 						"key": "Authorization",
 						"type": "text",
-						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTI5MDgsImV4cCI6MTU3ODQ3OTMwOH0.VyXxF5t_vmlLunRJiMJQOXX32weiMTkyMbJUaMTWjJs"
+						"value": " Bearer {{accessToken}}"
 					},
 					{
 						"key": "Origin",
 						"type": "text",
-						"value": " https://10.110.0.19:20443"
+						"value": " https://{{servername}}:20443"
 					},
 					{
 						"key": "Content-Length",
 						"type": "text",
-						"value": " 37"
+						"value": " 37",
+						"disabled": true
 					},
 					{
 						"key": "Connection",
@@ -180,33 +179,30 @@
 					"raw": "{\"command\":\"config-output\",\"value\":0}"
 				},
 				"url": {
-					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"raw": "https://{{servername}}:20443/v1/devices/{{id}}",
 					"protocol": "https",
 					"host": [
-						"10",
-						"110",
-						"0",
-						"19"
+						"{{servername}}"
 					],
 					"port": "20443",
 					"path": [
 						"v1",
 						"devices",
-						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Entrance LED Locate",
+			"name": "LED Panel Locate",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Host",
 						"type": "text",
-						"value": " 10.110.0.19:20443"
+						"value": "{{servername}}:20443"
 					},
 					{
 						"key": "User-Agent",
@@ -231,7 +227,7 @@
 					{
 						"key": "Referer",
 						"type": "text",
-						"value": " https://10.110.0.19:20443/devices"
+						"value": " https://{{servername}}:20443/devices"
 					},
 					{
 						"key": "Content-Type",
@@ -242,17 +238,18 @@
 					{
 						"key": "Authorization",
 						"type": "text",
-						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTI5MDgsImV4cCI6MTU3ODQ3OTMwOH0.VyXxF5t_vmlLunRJiMJQOXX32weiMTkyMbJUaMTWjJs"
+						"value": " Bearer {{accessToken}}"
 					},
 					{
 						"key": "Origin",
 						"type": "text",
-						"value": " https://10.110.0.19:20443"
+						"value": " https://{{servername}}:20443"
 					},
 					{
 						"key": "Content-Length",
 						"type": "text",
-						"value": " 37"
+						"value": "20",
+						"disabled": true
 					},
 					{
 						"key": "Connection",
@@ -275,32 +272,29 @@
 					"raw": "{\"command\":\"locate\"}"
 				},
 				"url": {
-					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"raw": "https://{{servername}}:20443/v1/devices/{{id}}",
 					"protocol": "https",
 					"host": [
-						"10",
-						"110",
-						"0",
-						"19"
+						"{{servername}}"
 					],
 					"port": "20443",
 					"path": [
 						"v1",
 						"devices",
-						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Entrance LED Dimmer",
+			"name": "LED Panel Dimmer",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
 						"key": "Host",
-						"value": " 10.110.0.19:20443",
+						"value": "{{servername}}:20443",
 						"type": "text"
 					},
 					{
@@ -325,7 +319,7 @@
 					},
 					{
 						"key": "Referer",
-						"value": " https://10.110.0.19:20443/devices",
+						"value": " https://{{servername}}:20443/devices",
 						"type": "text"
 					},
 					{
@@ -335,18 +329,19 @@
 					},
 					{
 						"key": "Authorization",
-						"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVkX3Rlc3QiLCJpYXQiOjE1NzgzOTkyMjksImV4cCI6MTU3ODQ4NTYyOX0.Xzidr1f-FP2ntdxQnQ_j0P7OpayIuI0bgm2yOb6zcHs",
+						"value": " Bearer {{accessToken}}",
 						"type": "text"
 					},
 					{
 						"key": "Origin",
-						"value": " https://10.110.0.19:20443",
+						"value": " https://{{servername}}:20443",
 						"type": "text"
 					},
 					{
 						"key": "Content-Length",
 						"value": " 29",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "Connection",
@@ -366,26 +361,151 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"command\":\"sync\",\"value\":99}"
+					"raw": "{\"command\":\"sync\",\"value\":1}"
 				},
 				"url": {
-					"raw": "https://10.110.0.19:20443/v1/devices/e8669ab8-42b6-4baa-9c75-977c78afedb7",
+					"raw": "https://{{servername}}:20443/v1/devices/{{id}}",
 					"protocol": "https",
 					"host": [
-						"10",
-						"110",
-						"0",
-						"19"
+						"{{servername}}"
 					],
 					"port": "20443",
 					"path": [
 						"v1",
 						"devices",
-						"e8669ab8-42b6-4baa-9c75-977c78afedb7"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get tokens",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "{{servername}}:20443",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": " Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:71.0) Gecko/20100101 Firefox/71.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": " */*",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": " en-US,it-IT;q=0.8,it;q=0.5,en;q=0.3",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": " https://{{servername}}:20443/login?redirect=%2Fstatistics",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": " https://{{servername}}:20443",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": " 45",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Connection",
+						"value": " keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Pragma",
+						"value": " no-cache",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": " no-cache",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":{{username}},\"password\":{{password}}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{servername}}:20443/v1/login",
+					"protocol": "https",
+					"host": [
+						"{{servername}}"
+					],
+					"port": "20443",
+					"path": [
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "322a50d3-93d4-4a9b-9a5c-d1487c1e3090",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "720aea28-3f13-43af-a595-7d9cfad9f597",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "18ec4715-0f2d-47aa-8c95-84183c44eb54",
+			"key": "username",
+			"value": "username",
+			"type": "string"
+		},
+		{
+			"id": "a5eeade7-6725-4433-93f9-b47fe202194f",
+			"key": "password",
+			"value": "password",
+			"type": "string"
 		}
 	]
 }
