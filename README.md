@@ -18,7 +18,7 @@ This APIs are tested in the following scenario:
 - EOT LED Controller v1.6.1 BETA
 
 ## Postman collection
-The REST API reference is in [this](postman/UNIFI-LED.postman_collection.json) Postman collection.
+The REST API reference is published also in [this page](https://documenter.getpostman.com/view/1477209/SWT7BKDA?version=latest) on the Postman documenter website.
 
 ## Node-RED
 We also created a [Node-RED flow](node-red/flow.json) to control the lights, adding some nice effects.
